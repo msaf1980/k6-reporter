@@ -170,6 +170,7 @@
                 <th>Minimum</th>
                 <th>90th Percentile</th>
                 <th>95th Percentile</th>
+                <th>99th Percentile</th>
               </tr>
             </thead>
             
@@ -194,6 +195,9 @@
                 </td>
                 <td class="{{ range $thresKey, $failed := $metric.thresholds }} {{ if and ($failed) (regexMatch "95" $thresKey) }} failed {{ end }} {{ end }}">
                   {{ round (index $metric "p(95)") 2 }}
+                </td>
+                <td class="{{ range $thresKey, $failed := $metric.thresholds }} {{ if and ($failed) (regexMatch "99" $thresKey) }} failed {{ end }} {{ end }}">
+                  {{ round (index $metric "p(99)") 2 }}
                 </td>
                 </tr>
               {{ end }}
